@@ -1,0 +1,78 @@
+.converter {
+  display: flex;
+  flex-direction: column;
+  margin: 150px auto 0;
+  width: 60%;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  &-input-textarea,
+  &-output-textarea {
+    border: 1px solid #cccccc;
+    padding: 20px;
+    width: 100%;
+  }
+
+  &-input-textarea {
+    margin-bottom: 20px;
+  }
+
+  &-output-textarea {
+    border: 1px solid #ebebeb;
+  }
+
+  &-types-block {
+    margin-bottom: 20px;
+  }
+
+  &-radio-wrapper {
+
+    & + & {
+      margin-top: 8px;
+    }
+  }
+
+  &-radio {
+    opacity: 0;
+    position: absolute;
+  }
+
+  &-radio-ui {
+    align-items: center;
+    border: 1px solid #c1c1c1;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    padding: 4px;
+
+    &::after {
+      $size: 8px;
+
+      background-color: transparent;
+      border-radius: 50%;
+      content: '';
+      height: $size;
+      width: $size;
+    }
+
+    input:checked + & {
+
+      &::after {
+        background-color: #c1c1c1;
+      }
+    }
+  }
+
+  &-radio-text {
+    margin-left: 5px;
+  }
+}
