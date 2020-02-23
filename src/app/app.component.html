@@ -1,19 +1,21 @@
 <div class="converter">
 
   <div class="converter-block">
-    <textarea class="converter-input-textarea" name="text" (input)="convert(model.converterType, $event.target.value)" [(ngModel)]="model.text"></textarea>
+    <label for="source-text">Enter text here</label>
+    <textarea id="source-text" class="converter-input-textarea" name="text" (input)="convert(model.converterType, $event.target.value)" [(ngModel)]="model.text"></textarea>
     <div class="converter-types-block">
       <div *ngFor="let converterType of converterTypes | keyvalue" class="converter-radio-wrapper">
-        <label class="converter-radio-label" [for]="converterType.value">
-          <input class="converter-radio" type="radio" name="converterType" (change)="convert(model.converterType, model.text)" [(ngModel)]="model.converterType" [value]="converterType.value" [id]="converterType.value">
+        <label class="converter-radio-label" [for]="converterType.value.id">
+          <input class="converter-radio" type="radio" name="converterType" (change)="convert(model.converterType, model.text)" [(ngModel)]="model.converterType" [value]="converterType.value.id" [id]="converterType.value.id">
           <span class="converter-radio-ui"></span>
-          <span class="converter-radio-text">{{ converterType.value }} - {{ convertTo(converterType, model.text) }}</span>
+          <span class="converter-radio-text">{{ converterType.value.name }} - {{ convertTo(converterType.value.id, model.text) | truncate:[20] }}</span>
         </label>
       </div>
     </div>
   </div>
 
-  <textarea class="converter-output-textarea" [(ngModel)]="model.convertedText"></textarea>
+  <label for="result">Result</label>
+  <textarea id="result" class="converter-output-textarea" [(ngModel)]="model.convertedText"></textarea>
 </div>
 
 

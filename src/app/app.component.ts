@@ -10,16 +10,18 @@ import { ConverterService } from './services/converter.service';
 export class AppComponent {
 
   converterTypes = {
-    toLowerCase: 'toLowerCase',
-    toUpperCase: 'toUpperCase',
-    toHyphenCase: 'toHyphenCase',
-    toSnakeCase: 'toSnakeCase'
-  }
+    toLowerCase: { id: 'toLowerCase', name: 'To lower case'},
+    toUpperCase: { id: 'toUpperCase', name: 'To upper case'},
+    toHyphenCase: { id: 'toHyphenCase', name: 'To hyphen case'},
+    toSnakeCase: { id: 'toSnakeCase', name: 'To snake case'},
+  };
+
+  smapleText = 'Sample text # 1 % 5 @ and more';
 
   model = {
-    converterType: this.converterTypes.toLowerCase,
-    text: 'Sample text',
-    convertedText: this.convertTo(this.converterTypes.toLowerCase, 'Sample text')
+    converterType: this.converterTypes.toLowerCase.id,
+    text: this.smapleText,
+    convertedText: this.convertTo(this.converterTypes.toLowerCase.id, this.smapleText)
   };
 
   constructor(private converterService: ConverterService) {
@@ -31,13 +33,13 @@ export class AppComponent {
 
   convertTo(type, text): string {
     switch (type) {
-      case this.converterTypes.toLowerCase:
+      case this.converterTypes.toLowerCase.id:
         return this.converterService.toLowerCase(text);
-      case this.converterTypes.toUpperCase:
+      case this.converterTypes.toUpperCase.id:
         return this.converterService.toUpperCase(text);
-      case this.converterTypes.toHyphenCase:
+      case this.converterTypes.toHyphenCase.id:
         return this.converterService.toHyphenCase(text);
-      case this.converterTypes.toSnakeCase:
+      case this.converterTypes.toSnakeCase.id:
         return this.converterService.toSnakeCase(text);
       default:
         return '';
