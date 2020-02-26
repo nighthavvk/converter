@@ -1,8 +1,13 @@
+$color-blue: #173f5f;
+$color-blue-light: #20639b;
+
 .converter {
+  align-items: center;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  margin: 150px auto 0;
-  width: 60%;
+  height: 100vh;
+  width: 100%;
 
   * {
     box-sizing: border-box;
@@ -11,15 +16,22 @@
   &-block {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 40px;
+    width: 60%;
   }
 
   &-input-textarea,
   &-output-textarea {
     border: 1px solid #cccccc;
+    font-size: 14px;
+    min-height: 150px;
     padding: 20px;
+    resize: vertical;
     width: 100%;
+  }
+
+  &-label {
+    color: $color-blue;
+    margin-bottom: 5px;
   }
 
   &-input-textarea {
@@ -39,6 +51,11 @@
     & + & {
       margin-top: 8px;
     }
+  }
+
+  &-radio-label {
+    align-items: baseline;
+    display: flex;
   }
 
   &-radio {
@@ -67,12 +84,22 @@
     input:checked + & {
 
       &::after {
-        background-color: #c1c1c1;
+        background-color: $color-blue-light;
       }
     }
   }
 
   &-radio-text {
+    display: flex;
     margin-left: 5px;
+    width: 100%;
+
+    span {
+      flex: 1 1 auto;
+
+      &:first-child {
+        flex: 0 0 30%;
+      }
+    }
   }
 }
